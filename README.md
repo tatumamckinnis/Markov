@@ -78,7 +78,7 @@ To help test your `WordGram` and `HashMarkov` implementations, you are given som
 Note that by default (to avoid compiler errors in the starter code), `MarkovTest` is testing the `BaseMarkov` implementation. When you are ready to test your `HashMarkov` implementation, you will want to change which model is created in the `getModel` method of `MarkovTest` at the position shown in the screenshow below (if the image does not render for you, you can find them in the `figures` folder).
 
 <details>
-<summary>Expand here for screenshot of getModel in MarkovTest</summary>
+<summary>Expand here for a screenshot of getModel in MarkovTest</summary>
 
 <div align="center">
   <img width="400" height="200" src="figures/markovTest.png">
@@ -86,7 +86,7 @@ Note that by default (to avoid compiler errors in the starter code), `MarkovTest
 
 </details>
 
-In order **to run these tests** inside VS Code, click the [Test Explorer](https://code.visualstudio.com/docs/java/java-testing#_test-explorer) (beaker) icon on the left side of VS Code (it should be the lowest icon on the panel). You can expand the arrow for `p2-markov` and the default package to see two sets of tests: One for `MarkovTest` and another for `WordGramTest`. You can click the run triangle next to a test package to run the tests. Screenshot example in the expandable section below. *Note that JUnit programs are run by the JUnit library and the beaker-icon, not be running them as Java programs.*
+In order **to run these tests** inside VS Code, click the [Test Explorer](https://code.visualstudio.com/docs/java/java-testing#_test-explorer) (beaker) icon on the left side of VS Code (it should be the lowest icon on the panel). You can expand the arrow for `p2-markov` and the default package to see two sets of tests: One for `MarkovTest` and another for `WordGramTest`. You can click the run triangle next to each test package to run the tests. See the screenshot example in the expandable section below. *Note that JUnit programs are run by the JUnit library and the beaker-icon, not be running them as Java programs.*
 
 <details>
 <summary>Expand here for screenshot running JUnit test in VS Code</summary>
@@ -218,5 +218,7 @@ Don't forget to upload a PDF for the analysis part of this assignment and mark w
 ### Grading
 
 | WordGram | 8 points |
+-----------------------
 | HashMarkov | 8 points |
+-------------------------
 | Analysis | 12 points |
