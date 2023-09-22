@@ -2,7 +2,7 @@
 
 This is the directions document for Project P2 Markov in CompSci 201 at Duke University, Fall 2023.
 
-See [the details document](docs/details.md) for information on using Git, starting the project, and more details about the project including using Git.
+See [the details document](docs/details.md) for information on using Git, starting the project, and more details about the project including information about the classes and concepts that are outlined briefly below.
 
 
 ## Outline
@@ -35,47 +35,8 @@ You're given several classes to test the `WordGram` class you'll develop. It's l
 
 You will implement a class called `WordGram` that represents a sequence of words (represented as strings), just like a Java String represents a sequence of characters. Just as the Java String class is an immutable sequence of characters, the `WordGram` class you implement will be an immutable sequence of strings. Immutable means that once a WordGram object has been created, it cannot be modified. You cannot change the contents of a `WordGram` object. However, you can create a new WordGram from an existing `WordGram`.
 
-The number of strings contained in a `WordGram` is sometimes called the *order* of the WordGram, and we sometimes call the `WordGram` an *order-k* WordGram, or a *k-gram* -- the term used in the Markov program you'll implement for Part 2.  You can expand below to see some examples of order-3 `WordGram` objects.
+For details about the `WordGram` class and the concepts in it, see the [details document](docs/details.md) -- the explanation below assumes you have a very good understanding of the `WordGram` class.
 
-<details>
-<Summary>Expand to see examples of order-3 `WordGram`s</summary>
-
-| | | |
-| --- | --- | --- |
-| "cat" | "sleeping" | "nearby" |
-| | | |
-
-and 
-| | | |
-| --- | --- | --- |
-| "chocolate" | "doughnuts" | "explode" |
-| | | |
-
-</details> 
-
-### What is a Markov Model?
-
-Markov models are random models with the Markov property. In our case, we want to create a Markov model for generating random text that looks similar to a training text. We will generate one random word at a time, and the Markov property in our context means that the probabilities for that next word will be based on the previous words.
-
-An order-k Markov model uses order-k `WordGram`s to predict text: we sometimes call these *k-grams* where *k* refers to the order. To begin, we select a random k-gram from the *training text* (the data we use to create our model; we want to generate random text similar to the training text). Then, we look for instances of that k-gram in the training text in order to calculate the probabilities corresponding to words that might follow. We then generate a new word according to these probabilities, after which we repeat the process using the last k-1 words from the previous k-gram and the newly generated word. Continue in that fashion to create the desired number of random words. 
-
-Here is a concrete example. Suppose we are using an order 2 Markov model with the following training text (located in `testfile.txt`):
-
-```
-this is a test
-it is only a test
-do you think it is a test
-this test it is ok
-it is short but it is ok to be short
-```
-
-We begin with a random k-gram, suppose we get `[it, is]`. This appears 5 times in total, and is followed by `only`, `a`, `ok`, `short`, and again by `ok` each of those five times respectively. So the probability (in the training text) that `it is` is followed by `ok` is 2/5 or 40%, and for the other words is 1/5 or 20%. To generate a random word following the 2-gram `[it, is]`, we would therefore choose `ok` with 2/5 probability, or `only`, `a`, or `short` with 1/5 probability each.
-
-Rather than calculating these probabilities explicitly, your code will use them implicitly. In particular, the `getFollows` method will return a `List` of *all* of the words that follow after a given k-gram in the training text (including duplicates), and then you will choose one of these words uniformly at random. Words that more commonly follow will be selected with higher probability by virtue of being duplicated in the `List`.
-
-Suppose we choose `ok` as the next random word. Then the random text generated so far is `it is ok`, and the current `WordGram` of order 2 we are using would be updated to `[is, ok]`. We then again find the following words in the training text, and so on and so forth, until we have generated the desired number of random words.
-
-Of course, for a very small training text these probabilities may not be very meaningful, but random generative models like this can be much more powerful when supplied with large quantities of training data, in this case meaning very large training texts.
 
 <details>
 <summary>Historical details of this assignment (optional)</summary>
