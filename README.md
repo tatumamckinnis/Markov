@@ -215,6 +215,8 @@ You will submit the assignment on Gradescope. You can access Gradescope through 
 
 Don't forget to upload a PDF for the analysis part of this assignment and mark where you answer each question. This is a separate submission in Gradescope.
 
+*Do not forget to record 20 minutes of your coding work*.
+
 ### Grading
 
 | Section.  | points |
@@ -222,4 +224,5 @@ Don't forget to upload a PDF for the analysis part of this assignment and mark w
 | WordGram  | 8   |
 | HashMarkov| 8   |
 | Analysis  | 12  |
+| Video | 2 |
 
