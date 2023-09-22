@@ -115,11 +115,9 @@ Your task will be to implement these methods in `WordGram` according to the spec
 
 Note that `WordGram` objects are *immutable*, meaning they should not change after creation (similar to Java Strings). Therefore, none of the methods except the constructor should *mutate* (or change) the words assosciated with a `WordGram` object.
 
-You can expand the sections below to see details about individual methods you need to implement.
+For details on the constructor and methods of the `WordGram` class see the comments in the class you're given when you clone the project and the detailed descriptions in the [details document](docs/details.md).
 
-
-
-After implementing the `WordGram` class, you can run the `WordGramTest` [JUnit tests](#junit-tests).
+After implementing the `WordGram` class, you should run the `WordGramTest` [JUnit tests](#junit-tests) to verify that your implementation is correct.
 
 After correctly implementing the `WordGram` class, re-run the `MarkovDriver`. With the default values (`TEXT_SIZE = 100`, `RANDOM_SEED = 1234`, `MODEL_ORDER = 2`, `PRINT_MODE = true`, and `filename = "data/alice.txt"`) you should see different output than when you first ran the starter code, something like what is shown in the expandable section below.
 
@@ -142,7 +140,7 @@ the wandering hair
 
 </details>
 
-Note in particular how the phrases/sentences seem better connected than what resulted from the starter code. As you will see when inspecting `BaseMarkov`, if it cannot find a given `WordGram` to calculate possible following words, it simply generates a random word from the text. Before, with an incorrect constructor, `equals()`, etc., the original starter message was just random words from *Alice in Wonderland*. Now with a correct `WordGram` class, `BaseMarkov` is generating output from the Markov model described in the intro section [What is a Markov Model?](#what-is-a-markov-model).
+Note in particular how the phrases/sentences seem better connected than what resulted from the starter code. As you will see when inspecting `BaseMarkov`, if it cannot find a given `WordGram` to calculate possible following words, it stops generating text. Before, with an incorrect constructor, `equals()`, etc., the original starter message was just random words from *Alice in Wonderland*. Now with a correct `WordGram` class, `BaseMarkov` is generating output from the Markov model described in the intro section of the [details document](docs/details.md).
 
 *Caution*: Seeing the output shown above does not necessarily mean that every method of your `WordGram` class is correct. In particular, `BaseMarkov` does not use hashing, and so the `hashCode()` method does not impact it, but you should correctly implement *all* methods of `WordGram` before proceeding to the next part.
 
@@ -151,63 +149,17 @@ Note in particular how the phrases/sentences seem better connected than what res
 
 In this part you will develop a Markov model for generating random text using `WordGram`s and hashing. In particular, you should create a new `HashMarkov.java` file with a single public `HashMarkov` class that implements the `MarkovInterface`. 
 
-Your implementation should have the same behavior as `BaseMarkov` in terms of implementing the interface methods and generating the same output, but it will have different performance properties due to the use of a `HashMap` in training. In particular, `HashMarkov` should create an instance variable `HashMap` that maps `WordGram`s of a given order to `List`s of words that follow that `WordGram`. The training text should be read (looped over) *exactly once* during the `setTraining()` method to create this map. Subsequently, the `getFollows()` method should simply return the corresponding `List` from the map, or an empty `List` if there is no entry in the map, and this should be used in `getRandomText()` to avoid having to search the training text again for every random word generated.
+Your implementation should have the same behavior as `BaseMarkov` in terms of implementing the interface methods and generating the same output, but it will have different performance properties due to the use of a `HashMap` in training. In particular, `HashMarkov` should create an instance variable `HashMap` that maps `WordGram`s of a given order to `List`s of words that follow that `WordGram`. The code below shows how you can do this, but the call of `new` should be in the constructor of the class, initializing the instance variable `myMap` you'll need to define.
 
-You can and should use `BaseMarkov` as an example for how to implement the `MarkovInterface`, noting in particular that you *must* override and implement the interface methods. The private *helper* method `getNext()` is not required, but you might consider implementing something analogous or even other private helper methods to keep your `HashMarkov` implementation organized. You can expand the sections below for details.
+```
+HashMap<WordGram, List<String>> myMap = new HashMap<>();
+```
 
-<details>
-<summary>Expand for details on instance variables</summary>
+The training text should be read (looped over) *exactly once* during the `setTraining()` method to create this map. Subsequently, the `getFollows()` method should simply return the corresponding `List` from the map, or an empty `List` if there is no entry in the map, and this should be used in `getRandomText()` to avoid having to search the training text again for every random word generated.
 
-You will need the same instance variables as in `BaseMarkov` for storing the words of the training text, the random number generator, and the order of the model. In addition, you will need a `HashMap` instance variable that maps from `WordGram`s (the keys) to `List<String>` (the values). 
+You can and should use `BaseMarkov` as an example for how to implement the `MarkovInterface`, noting in particular that you *must* override and implement the interface methods. The private *helper* method `getNextWord()` is not required, but you might consider implementing something analogous or even other private helper methods to keep your `HashMarkov` implementation organized. You can see details of the methods and class in the [details document](docs/details.md).
 
-</details>
 
-<details>
-<summary>Expand for details on Constructor</summary>
-
-You must have at least one constructor that takes as input the order of `WordGram`s used in the model. It should initialize the instance variables, similar to `BaseMarkov`.
-
-</details>
-
-<details>
-<summary>Expand for details on setTraining()</summary>
-
-Similar to `BaseMarkov`, your `setTraining()` method should store the words of the training text in an Array of Strings. The easiest way is to use the method call `text.split("\\s+")` as seen in `BaseMarkov` - the regular expression `\\s+` is used to split on all whitespace, including spaces and newline characters.
-
-In addition, you should start by clearing the `HashMap` instance variable (for example, if the name of the variable is `myMap`, you can do this by calling `myMap.clear();`). This ensures that the map does not contain stale data if `setTraining()` is called multiple times on different training texts.
-
-Finally, you should loop through the words in the training text *exactly once* and, for each `WordGram` of the given order in the text, add all of the words that follow it to the corresponding `List<String>` value in your `HashMap` instance variable.
-
-</details>
-
-<details>
-<summary>Expand for details on getFollows()</summary>
-
-Just like in `BaseMarkov`, the `getFollows` method takes a `WordGram` object `wgram` as a parameter and should return a `List` of all the words (represented as `String`s) that follow from `wgram` in the training text. The `HashMarkov` implementation should be more efficient, as it should *not* loop over the training text, but should instead simply lookup the `List` in the `HashMap` instance variable intialized during `setTraining()`, or return an empty `List` if the `wgram` is not a key in the map.
-
-</details>
-
-<details>
-<summary>Expand for details on getRandomText()</summary>
-
-This method should use the `HashMap` instance variable set during `setTraining()` and the `getFollows()` method to generate `length` words of random text one at a time according to the Markov model described in the intro section [What is a Markov Model?](#what-is-a-markov-model). 
-
-You can use `BaseMarkov` as an example to adapt, for example, how to update the current `WordGram`, loop generating the random text, to see how to use the random number generator to get a random integer index up to a certain bound, etc. Like `BaseMarkov`, in the event that there is a `WordGram` with no word that follows (i.e., `getFollows()` returns an empty list), you should choose a word at random from the training text. 
-
-Note that, in order to adhere to the specification that `HashMarkov` should generate the same random text as `BaseMarkov` given the same random seed, **you will need to use the random number generator in the same way as `BaseMarkov`, so follow the `nextInt()` calls from `BaseMarkov` carefully.** In particular:
-- Make one call to `nextInt()` at the beginning to get the initial random `WordGram`,
-- Make one call to `nextInt()` at every iteration of the main text generating loop. Either you need to a random word from a the `getFollows` list, or you need to get a random word from the entire text. See the `getNext` method of `BaseMarkov` for an example.
-
-Unlike `BaseMarkov`, Your implementation should *not* loop over the words of the training text again every time it generates a next word.
-
-</details>
-
-<details>
-<summary>Expand for details on getOrder() and setSeed()</summary>
-
-`getOrder()` is just a getter method that should return the order of the Markov model, stored in an instance variable. `setSeed()` should simply call the `setSeed()` method of the random number generator instance variable and pass the corresponding random seed.
-
-</details>
 
 ### Running and Testing HashMarkov
 
