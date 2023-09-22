@@ -157,7 +157,7 @@ HashMap<WordGram, List<String>> myMap = new HashMap<>();
 
 The training text should be read (looped over) *exactly once* during the `setTraining()` method to create this map. Subsequently, the `getFollows()` method should simply return the corresponding `List` from the map, or an empty `List` if there is no entry in the map, and this should be used in `getRandomText()` to avoid having to search the training text again for every random word generated.
 
-You can and should use `BaseMarkov` as an example for how to implement the `MarkovInterface`, noting in particular that you *must* override and implement the interface methods. The private *helper* method `getNextWord()` is not required, but you might consider implementing something analogous or even other private helper methods to keep your `HashMarkov` implementation organized. You can see details of the methods and class in the [details document](docs/details.md).
+You can and should use `BaseMarkov` as an example for how to implement the `MarkovInterface`, noting in particular that you *must* override and implement the interface methods. The private *helper* method `getNextWord()` is not required, but you might consider implementing something analogous or even other private helper methods to keep your `HashMarkov` implementation organized. You can see details of the methods and class in the [details document](docs/details.md). Please read that details document carefully since it will tell you how to implement `getRandomText` using copy/paste :-)
 
 
 ### Running and Testing HashMarkov
@@ -214,3 +214,9 @@ There is no right or wrong answer to either question; we are looking for one or 
 You will submit the assignment on Gradescope. You can access Gradescope through the tab on Sakai. Please take note that changes/commits on GitLab are NOT automatically synced to Gradescope. You are welcome to submit as many times as you like, only the most recent submission will count for a grade.
 
 Don't forget to upload a PDF for the analysis part of this assignment and mark where you answer each question. This is a separate submission in Gradescope.
+
+### Grading
+
+| WordGram | 8 points |
+| HashMarkov | 8 points |
+| Analysis | 12 points |
