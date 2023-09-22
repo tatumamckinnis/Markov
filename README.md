@@ -46,28 +46,24 @@ For details about the `WordGram` class and the concepts in it, see the [details 
 
 ## Running Driver Code
 
-The primary driver code for this assignment is located in `MarkovDriver.java`. You should be able to run the `public static void main` method of `MarkovDriver` immediately after cloning the starter code, and should see something like the output shown in the expandable section below (noting that your exact runtimes will likely be different / machine dependent).
+The primary driver code for this assignment is located in `MarkovDriver.java`. You should be able to run the `public static void main` method of `MarkovDriver` immediately after cloning the starter code, and should see something like the output shown in the expandable section below (noting that your exact runtimes will likely be different / machine dependent). Note that *there is no random text generated* because you must implement `WordGram` before the code in `BaseMarkov` works.
 
 <details><summary>Expand for example output of MarkovDriver with starter code</summary>
 
 ```
+
 Trained on text in data/alice.txt with T=28196 words
-Training time = 0.012 s
+Training time = 0.011 s
 Generated N=100 random words with order 2 Markov Model
-Generating time = 0.014 s
+Generating time = 0.002 s
 ----------------------------------
- sorrowful ME' as to an a the with you things ring, deal enough!' ago: this unjust 
-and felt Tortoise explanation; he forgetting WOULD the other it `That's person Duchess 
-broken deal it. was Hare. talking simple old, thoughtfully. last Alice; while next 
-away and held `poison,' the said at under King way?', only with could looking other 
-it came and accidentally it she `and round smile. things children. very YOU copies 
-in `why join to drowned `That had if I much did said: stop introduced or said out 
-beautiful go she thank machine it at morsel beauti--FUL an
+ 
+----------------------------------
 ```
 
 </details>
 
-This initial output just looks like nonsense for now because the `WordGram` class is not correctly implemented; that will be your first coding task. Before starting to code however, you are encouraged to inspect `MarkovDriver` a little more closely to understand what it is doing. You will find details about the `MarkovDriver` class in the class and its comments as well 
+This initial output is blank now because the `WordGram` class is not correctly implemented; that will be your first coding task. Before starting to code however, you are encouraged to inspect `MarkovDriver` a little more closely to understand what it is doing. You will find details about the `MarkovDriver` class in the class and its comments as well 
 as in the [details document](docs/details.md) that is part of this project.
 
 
