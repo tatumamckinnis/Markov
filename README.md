@@ -185,7 +185,7 @@ For the analysis, let $`N`$ denote the length/number of words of the random text
 |littlebrother.txt|18,304| 119,986|
 |melville.txt| 4,256 | 14,353|
 |romeo.txt| 6,394 | 25,788 |
-| shakespeare.txt | 67,505, 901,325|
+| shakespeare.txt | 67,505 | 901,325|
 
 ### Question 1
 
