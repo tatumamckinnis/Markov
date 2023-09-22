@@ -153,10 +153,11 @@ Your implementation should have the same behavior as `BaseMarkov` in terms of im
 HashMap<WordGram, List<String>> myMap = new HashMap<>();
 ```
 
-The training text should be read (looped over) *exactly once* during the `setTraining()` method to create this map. Subsequently, the `getFollows()` method should simply return the corresponding `List` from the map, or an empty `List` if there is no entry in the map, and this should be used in `getRandomText()` to avoid having to search the training text again for every random word generated.
+The training text should be read (looped over) *exactly once* as the `setTraining()` method executes to create `myMap`. As a result, the `getFollows()` method should simply return the corresponding `List` from the map (or an empty `List` if there is no entry in the map), and this should be used in `getRandomText()` *This means your code avoids having to search the training text again for every random word generated*, leading to signficant efficiency 
+in the `getRandomText` method.
 
-You can and should use `BaseMarkov` as an example for how to implement the `MarkovInterface`, noting in particular that you *must* override and implement the interface methods. The private *helper* method `getNextWord()` is not required, but you might consider implementing something analogous or even other private helper methods to keep your `HashMarkov` implementation organized. You can see details of the methods and class in the [details document](docs/details.md). Please read that details document carefully since it will tell you how to implement `getRandomText` using copy/paste :-)
-
+You can and should use `BaseMarkov` as an example for how to implement the `MarkovInterface`, noting in particular that you *must* override and implement the interface methods. *See details of `getRandomText` method*, and the other methods and class in the [details document](docs/details.md). In particular, note that `getRandomText`, and the helper method it calls, `getNextWord` look eerily similar in `BaseMarkov` and `HashMarkov` as described in 
+the [details document](docs/details.md).
 
 ### Running and Testing HashMarkov
 
