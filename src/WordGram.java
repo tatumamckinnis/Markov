@@ -24,22 +24,10 @@ public class WordGram {
 	public WordGram(String[] source, int start, int size) {
 		// TODO correctly implement constructor
 		myWords = new String[size];
-		System.arraycopy(source, start, myWords, 0, size);
+		for(int k=0; k < size; k++) {
+			myWords[k] = "hello";
+		}
 	}
-
-
-	/**
-	 * Return the word at a given index of WordGram
-	 * @param index of word
-	 * @return String/word at index position in WordGram
-	 * @throws IndexOutOfBoundsException if index < 0 or index >= length()
-	 */
-	public String wordAt(int index) {
-		// TODO correctly implement wordAt
-		//return "";
-		return myWords[index];
-	}
-
 
 	/**
 	 * Returns number of words in this WordGram
@@ -47,7 +35,7 @@ public class WordGram {
 	 */
 	public int length() {
 		// TODO correctly implement length 
-		return myWords.length;
+		return 0;
 	}
 
 
@@ -62,16 +50,7 @@ public class WordGram {
 		}
 		WordGram other = (WordGram) o;
 		// TODO complete correct implementation of equals (above is correct)
-		//return false;
-		if (myWords.length != other.myWords.length) {
-			return false;
-		}
-		for(int k=0; k < other.length(); k++) {
-			if (! myWords[k].equals(other.myWords[k])){
-				return false;
-			}
-		}
-		return true;
+		return false;
 	}
 
 
@@ -83,7 +62,7 @@ public class WordGram {
 	@Override
 	public int hashCode() {
 		// TODO correctly implement hashCode
-		return toString().hashCode();
+		return 0;
 	}
 
 
@@ -97,12 +76,7 @@ public class WordGram {
 	 */
 	public WordGram shiftAdd(String last) {
 		// TODO correctly implement shiftAdd
-		//return this;
 		WordGram wg = new WordGram(myWords, 0, length());
-		for(int k=0; k < myWords.length-1; k++) {
-			wg.myWords[k] = myWords[k+1];
-		}
-		wg.myWords[myWords.length-1] = last;
 		return wg;
 	}
 
@@ -114,10 +88,6 @@ public class WordGram {
 	@Override
 	public String toString() {
 		// TODO correctly implement toString
-		//return "";
-		if (myToString == null || myToString.equals("")) {
-			myToString = String.join(" ",myWords);
-		}
-		return myToString;
+		return "";
 	}
 }

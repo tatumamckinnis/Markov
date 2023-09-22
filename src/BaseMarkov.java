@@ -78,10 +78,10 @@ public class BaseMarkov implements MarkovInterface {
 	 * @return a random word among those that follow after kGram in 
 	 * the training text, or END_OF_TEXT if none
 	 */
-	private String getNext(WordGram wgram) {
+	private String getNextWord(WordGram wgram) {
 		List<String> follows = getFollows(wgram);
 		if (follows.size() == 0) {
-			System.out.println("**************");
+			System.out.println("******ERROR********");
 			return END_OF_TEXT;
 		}
 		else {
@@ -109,7 +109,7 @@ public class BaseMarkov implements MarkovInterface {
 		randomWords.add(current.toString());
 
 		for(int k=0; k < length-myOrder; k += 1) {
-			String nextWord = getNext(current);
+			String nextWord = getNextWord(current);
 			if (nextWord.equals(END_OF_TEXT)) {
 				break;
 			}
