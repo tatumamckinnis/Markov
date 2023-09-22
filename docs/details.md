@@ -64,3 +64,81 @@ Of course, for a very small training text these probabilities may not be very me
 - The `generator` is timed in how long it takes to run two methods: first `setTraining()` and then `getRandomText()`.
 - Finally, values are printed: The random text itself if `PRINT_MODE` is set to true and the time it took to train (that is, for `setTraining()` to run) the Markov model and to generate random text using the model (that is, for `getRandomText` to run). 
 
+## Developing the WordGram class: details
+
+The constructors and methods of the `WordGram` class are detailed below. 
+
+### Constructors 
+
+You'll construct a `WordGram` object by passing as constructor arguments: an array, a starting index, and the size (or order) of the `WordGram.` You'll **store the strings in an array instance variable** by copying them from the array passed to the constructor.
+
+There are three instance variables in `WordGram`:
+```
+private String[] myWords;
+private String myToString;
+private int myHash;
+```
+
+The constructor for WordGram `public WordGram(String[] source, int start, int size)`
+should store `size` strings from the array `source`, starting at index `start` (of `source`) into the private `String` array instance variable `myWords` of the `WordGram` class. The array `myWords` should contain exactly `size` strings. 
+
+For example, suppose parameter `words` is the array below, with "this" at index 0.
+
+| | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- |
+| "this" | "is" | "a" | "test" |"of" |"the" |"code" |
+| | | | | | |
+
+The call `new WordGram(words,3,4)` should create this array `myWords` since the starting index is the second parameter, 3, and the size is the third parameter, 4.
+
+| | | | |
+| --- | --- | --- | --- |
+| "test" | "of" | "the" | "code"|
+| | | | |
+
+You can initialize the instance variables `myToString` and `myHash` in the constructor stub to whatever default values you choose; these will change when you implement the methods `.toString()` and `.hashCode()`, respectively.
+</details>
+
+### The wordAt() method
+
+The `wordAt()` method should return the word at the given index in `myWords`. 
+
+### The length() method 
+
+The `length()` method should return the order of the `WordGram`, that is, the length of `myWords`. 
+
+### The .equals method
+
+The `equals()` method should return `true` when the parameter passed is a `WordGram` object with **the same strings in the same order** as this object. 
+
+The [Java API specification of `.equals()`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object) takes an `Object` type as input. Thus, the first thing the `WordGram` `equals()` method should do is check if the parameter passed is really a `WordGram` using the `instanceof` operator, and if not return false. Otherwise, the parameter can be *cast* as a `WordGram`. This is done for you in the starter code and you do not need to change it.
+
+Then what you need to do is compare the strings in the array `myWords` of `other` and `this` (the object on which `equals()` is called). Note that `WordGram` objects of different lengths cannot be equal, and your code should check this.
+
+### The hashCode() method
+
+The `hashCode()` method should return an `int` value based on all the strings in instance variable `myWords`. See the [Java API documentation](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()) for the design constraints to which a `hashCode()` method should conform. 
+
+Note that the Java String class already has a good [`.hashCode()` method](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#hashCode()) we can leverage. Use the `.hashCode()` of the String returned by `this.toString()` to implement this method.
+
+Since `WordGram` objects are immutable (do not change after creation), you do not need to recompute the hash value each time `.hashCode()` is called. Instead, you can compute it the first time `.hashCode()` is called (which you can check against whatever default value you might set in the constructor), and store the result in the `myHash` instance variable. On subsequent calls, simply return `myHash`.
+
+### The shiftAdd() method
+
+If this `WordGram` has k entries then the `shiftAdd()` method should create and return a _**new**_ `WordGram` object, also with k entries, whose *first* k-1 entries are the same as the *last* k-1 entries of this `WordGram`, and whose last entry is the parameter `last`. Recall that `WordGram` objects are immutable and cannot be modified once created - **this method must create a new WordGram object** and copy values correctly to return in the new `WordGram` created in the `shiftAdd` method.
+
+For example, if `WordGram w` is 
+| | | |
+| --- | --- | --- |
+| "apple" | "pear" | "cherry" |
+| | | | 
+
+then the method call `w.shiftAdd("lemon")` should return a new `WordGram` containing {"pear", "cherry", "lemon"}. Note that this new `WordGram` will not equal w.
+
+Note: To implement `shiftAdd()` you'll need to create a new `WordGram` object. The code in the method will still be able to assign values to the private instance variables of that object directly since the `shiftAdd()` method is in the `WordGram` class.
+
+### The toString() method
+
+The `toString()` method should return a printable `String` representing all the strings stored in the `WordGram` instance variable `myWords`, each separated by a single blank space (that is, `" "`). You may find the String `join` method useful, see [the documentation](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...)).
+
+You do not need to recompute this `String` each time `toString()` is called since the `WordGram` class is immutable-- instead, store the String being returned in instance variable `myToString`. On subsequent calls your code should simply return the value stored in `myToString` (again using the immutability of `WordGram`s to ensure this value will not change). To determine whether a given call to `toString()` is the first, you can compare to the default constructor value of `myToString`.
