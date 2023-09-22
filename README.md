@@ -160,7 +160,6 @@ The training text should be read (looped over) *exactly once* during the `setTra
 You can and should use `BaseMarkov` as an example for how to implement the `MarkovInterface`, noting in particular that you *must* override and implement the interface methods. The private *helper* method `getNextWord()` is not required, but you might consider implementing something analogous or even other private helper methods to keep your `HashMarkov` implementation organized. You can see details of the methods and class in the [details document](docs/details.md).
 
 
-
 ### Running and Testing HashMarkov
 
 The `MarkovDriver` sets a `RANDOM_SEED` to initialize the random number generator. You are welcome to change that value to experiment and play around with different random generations of text, but you should be sure to set it to 1234 for testing/submitting. Note that *if you use the same value for `RANDOM_SEED` you should get the same random text for `BaseMarkov` and `HashMarkov`*, if not, something is likely wrong with the implementation.
@@ -180,10 +179,10 @@ For the analysis, let $`N`$ denote the length/number of words of the random text
 
 ### Question 1
 
-What is the asymptotic (big O) runtime complexity of the methods: `setTraining()` `getRandomText()` for the `BaseMarkov` impelementation in terms of $`N`$ and $`T`$? State your answers, and justify them in *both* of the following ways.
+What is the asymptotic (big O) runtime complexity of each of the methods: `setTraining()` `getRandomText()` for the `BaseMarkov` impelementation in terms of $`N`$ and $`T`$? State your answers, and justify them in *both* of the following ways.
 
 - *Theory*. Explain why you expect `setTraining()` and `getRandomText()` for `BaseMarkov` to have the stated runtime complexity by referencing the algorithms/data structures/code used. Explain the complexity of each operation/method, accounting for any looping, in the code. You may assume that `nextInt` is a constant time operation to generate a random number and `split()` has runtime complexity $`O(T)`$ when called on the training text.
-- *Experiment*. Run the main method of `MarkovDriver` with *at least* 3 different data files of varying sizes $`T`$ (it is fine to use `alice.txt` for one of them). For each, run the main method with *at least* 3 different values of `TEXT_SIZE` (which corresponds to $`N`$). So you should have a total of at least 9 data points; use these to fill out a table like the one shown below. Explain how your empirical data does or does not conform to your expectations for the runtime complexity of `getRandomText()`.
+- *Experiment*. Run the main method of `MarkovDriver` with *at least* 3 different data files of varying sizes $`T`$ (it is fine to use `alice.txt` for one of them). For each, run the main method with *at least* 3 different values of `TEXT_SIZE` (which corresponds to $`N`$). So you should have a total of at least 9 data points; use these to fill out a table like the one shown below. *Explain how your empirical data does or does not conform to your expectations for the runtime complexity of `getRandomText()`.*
 
 | Data file    | $`T`$    | $`N`$    | Training Time (s)    | Generating time (s)    |
 | ------------ | -------- | -------- | -------------------- | ---------------------- |
@@ -200,11 +199,11 @@ You can use the same training texts and values for $`N`$ as you chose in questio
 
 ### Question 3
 
-Markov models like the one you implemented in this project are one example of a larger research area in artificial intelligence (AI) and machine learning (ML) called *generative models* for *natural language processing*. Currently, one of the state-of-the-art models is called *GPT-3*, created by [OpenAI](https://openai.com/about/). OpenAI states that their "mission is to ensure that artificial general intelligence (AGI)—...highly autonomous systems that outperform humans at most economically valuable work—benefits all of humanity." 
+Markov models like the one you implemented in this project are one example of a larger research area in artificial intelligence (AI) and machine learning (ML) called *generative models* for *natural language processing*. Currently, one of the state-of-the-art models is called *GPT*, created by [OpenAI](https://openai.com/about/). OpenAI states that their "mission is to ensure that artificial general intelligence (AGI)—...highly autonomous systems that outperform humans at most economically valuable work—benefits all of humanity." 
 
-GPT-3 is not, however, open-source, meaning that the underlying source code of the model is not freely available and the model is only accessible via API calls. Read this short article about open source code in artificial intelligence: Can’t Access GPT-3? Here’s GPT-J — Its Open-Source Cousin [accessible via this link](https://towardsdatascience.com/cant-access-gpt-3-here-s-gpt-j-its-open-source-cousin-8af86a638b11). 
+GPT is not, however, open-source, meaning that the underlying source code of the model is not freely available and the model is only accessible via API calls. Read this short article about open source code in artificial intelligence: Can’t Access GPT-3? Here’s GPT-J — Its Open-Source Cousin [accessible via this link](https://towardsdatascience.com/cant-access-gpt-3-here-s-gpt-j-its-open-source-cousin-8af86a638b11). 
 
-Answer one or both of the following related questions:
+Answer both of the following related questions:
 - What do you think of OpenAI's stated mission? In particular, do you think that "highly autonomous systems that outperform humans at most economically valuable work" can benefit all of humanity? Why or why not?
 - Do you think new research code in AI/ML should be more open source? Why, or why not? 
 
