@@ -1,4 +1,4 @@
-# Project 2: Markov, Fall 2023
+d# Project 2: Markov, Fall 2023
 
 This is the directions document for Project P2 Markov in CompSci 201 at Duke University, Fall 2023.
 
@@ -175,7 +175,17 @@ Once you are confident that your `HashMarkov` code is correct, you are ready to 
 
 Answer the following questions in your analysis. You'll submit your analysis as a separate PDF as a separate assignment to Gradescope. Answering these questions will require you to run the driver code to generate timing data and to reason about the algorithms and data structures you have implemented.
 
-For the analysis, let $`N`$ denote the length/number of words of the random text being generated. Let $`T`$ denote the length/number of words of the training text. Assume that *all words are of at most a constant length* (say, no more than 35 characters).
+For the analysis, let $`N`$ denote the length/number of words of the random text being generated. Let $`T`$ denote the length/number of words of the training text. Assume that *all words are of at most a constant length* (say, no more than 35 characters). To help in using the files in the `data` folder, here are is some information about total number of words and number of different words in some of the files:
+
+|file    |# different words| # total words|
+|--------|---------------|--------------|
+|alice.txt| 5,910 | 28,196 |
+|hawthorne.txt| 14,123| 85,753|
+|kjv10.txt| 34,027, 823,135|
+|littlebrother.txt|18,304| 119,986|
+|melville.txt| 4,256 | 14,353|
+|romeo.txt| 6,394 | 25,788 |
+| shakespeare.txt | 67,505, 901,325|
 
 ### Question 1
 
