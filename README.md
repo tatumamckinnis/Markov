@@ -77,7 +77,7 @@ Note that by default (to avoid compiler errors in the starter code), `MarkovTest
 <summary>Expand here for a screenshot of getModel in MarkovTest</summary>
 
 <div align="center">
-  <img width="400" height="200" src="figures/markovTest.png">
+  <img src="figures/markovTest2.png">
 </div>
 
 </details>
