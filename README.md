@@ -181,7 +181,7 @@ For the analysis, let $`N`$ denote the length/number of words of the random text
 |--------|---------------|--------------|
 |alice.txt| 5,910 | 28,196 |
 |hawthorne.txt| 14,123| 85,753|
-|kjv10.txt| 34,027, 823,135|
+|kjv10.txt| 34,027 | 823,135|
 |littlebrother.txt|18,304| 119,986|
 |melville.txt| 4,256 | 14,353|
 |romeo.txt| 6,394 | 25,788 |
