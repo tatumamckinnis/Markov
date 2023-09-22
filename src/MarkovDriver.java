@@ -49,7 +49,7 @@ public class MarkovDriver {
 		System.out.printf("Generating time = %2.3f s\n", generatingTimeMS);
 		if (PRINT_MODE) {
 			printNicely(random,80);
-		}
+		}	
 	}
 
 	private static void printNicely(String random, int screenWidth) {
