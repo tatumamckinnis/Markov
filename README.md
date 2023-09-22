@@ -217,9 +217,9 @@ Don't forget to upload a PDF for the analysis part of this assignment and mark w
 
 ### Grading
 
-| WordGram  | 8 points  |
-|-----------|-----------|
-| HashMarkov| 8 points  |
-|-----------|-----------|
-| Analysis  | 12 points |
-|-----------|-----------|
+| Section.  | points |
+|-----------|--------|
+| WordGram  | 8   |
+| HashMarkov| 8   |
+| Analysis  | 12  |
+
