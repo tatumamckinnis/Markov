@@ -84,11 +84,13 @@ Note that by default (to avoid compiler errors in the starter code), `MarkovTest
 
 In order **to run these tests** inside VS Code, click the [Test Explorer](https://code.visualstudio.com/docs/java/java-testing#_test-explorer) (beaker) icon on the left side of VS Code (it should be the lowest icon on the panel). You can expand the arrow for `p2-markov` and the default package to see two sets of tests: One for `MarkovTest` and another for `WordGramTest`. You can click the run triangle next to each test package to run the tests. See the screenshot example in the expandable section below. *Note that JUnit programs are run by the JUnit library and the beaker-icon, not be running them as Java programs.*
 
+You can test all the tests in `WordGramTest` by hovering over that label in the _TestExplorer_ panel which is active when you click the Beaker-Icon, and is shown in the screenshot when you expand the image below. You can also run each individual unit test by hovering and clicking on each test's run triangle. The results of the tests are in the VSCode _TEST RESULTS_ panel, not in the other panels where output is shown. Deciphering error JUnit error messages is not always straightforward -- but when the tests pass? You'll get all green.
+
 <details>
 <summary>Expand here for screenshot running JUnit test in VS Code</summary>
 
 <div align="center">
-  <img width="300" height="300" src="figures/testResults.png">
+  <img src="figures/junit2.png">
 </div>
 
 </details>
@@ -170,6 +172,12 @@ Once you are confident that your `HashMarkov` code is correct, you are ready to 
 ## Analysis Questions
 
 Answer the following questions in your analysis. You'll submit your analysis as a separate PDF as a separate assignment to Gradescope. Answering these questions will require you to run the driver code to generate timing data and to reason about the algorithms and data structures you have implemented.
+
+### Working Together for Analysis
+
+You're *stronlgy encouraged* to work with others in 201 in completing the analysis section for this project. In future projects you'll work on an entire project in pairs, and submit once for the pair. For this project, however, each person should submit independently. If you actively work with one or more people in 201, *please make sure* you list each other in the analysis document you turn in.
+
+### Big-O/O-notation for analysis questions
 
 For the analysis, let $`N`$ denote the length/number of words of the random text being generated. Let $`T`$ denote the length/number of words of the training text. Assume that *all words are of at most a constant length* (say, no more than 35 characters). To help in using the files in the `data` folder, here are is some information about total number of words and number of different words in some of the files:
 
