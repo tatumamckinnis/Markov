@@ -38,7 +38,7 @@ Your goal is to create a more efficient Markov-Generating program/class than the
 You're given several classes to test the `WordGram` class you'll develop. It's likely that when you've developed the `WordGram` class and it passes all tests that you'll be able to run `BaseMarkov` to see random text generated. Then you'll be able to develop the more efficient `HashMarkov` class.
 
 
-### What is a `WordGram`
+## What is a `WordGram`
 
 You will implement a class called `WordGram` that represents a sequence of words (represented as strings), just like a Java String represents a sequence of characters. Just as the Java String class is an immutable sequence of characters, the `WordGram` class you implement will be an immutable sequence of strings. Immutable means that once a WordGram object has been created, it cannot be modified. You cannot change the contents of a `WordGram` object. However, you can create a new WordGram from an existing `WordGram`.
 
@@ -71,11 +71,9 @@ This initial output just looks like nonsense for now because the `WordGram` clas
 as in the [details document](docs/details.md) that is part of this project.
 
 
-
-
 ## JUnit Tests
 
-To help test your `WordGram` and `HashMarkov` implementations, you are given some *unit tests* in `WordGramTest.java` and `MarkovTest.java`, both located in the `src` folder. A unit test specifies a given input and asserts an expected outcome of running a method, then runs your code to confirm that the expected outcome occurs. You can see the exact tests inside of the two files. 
+To help test your `WordGram` and `HashMarkov` implementations, you are given some *unit tests* in `WordGramTest.java` and `MarkovTest.java`, both located in the `src` folder. A unit test specifies a given input and asserts an expected outcome of running a method, then runs your code to confirm that the expected outcome occurs. You can see the exact tests inside of the two files. the JUnit library used by these testing classes is a very widely-used industry standard for unit testing.
 
 Note that by default (to avoid compiler errors in the starter code), `MarkovTest` is testing the `BaseMarkov` implementation. When you are ready to test your `HashMarkov` implementation, you will want to change which model is created in the `getModel` method of `MarkovTest` at the position shown in the screenshow below (if the image does not render for you, you can find them in the `figures` folder).
 
@@ -88,7 +86,7 @@ Note that by default (to avoid compiler errors in the starter code), `MarkovTest
 
 </details>
 
-In order **to run these tests** inside VS Code, click the [Test Explorer](https://code.visualstudio.com/docs/java/java-testing#_test-explorer) (beaker) icon on the left side of VS Code (it should be the lowest icon on the panel). You can expand the arrow for `p2-markov` and the default package to see two sets of tests: One for `MarkovTest` and another for `WordGramTest`. You can click the run triangle next to a test package to run the tests. Screenshot example in the expandable section below.
+In order **to run these tests** inside VS Code, click the [Test Explorer](https://code.visualstudio.com/docs/java/java-testing#_test-explorer) (beaker) icon on the left side of VS Code (it should be the lowest icon on the panel). You can expand the arrow for `p2-markov` and the default package to see two sets of tests: One for `MarkovTest` and another for `WordGramTest`. You can click the run triangle next to a test package to run the tests. Screenshot example in the expandable section below. *Note that JUnit programs are run by the JUnit library and the beaker-icon, not be running them as Java programs.*
 
 <details>
 <summary>Expand here for screenshot running JUnit test in VS Code</summary>
@@ -119,97 +117,7 @@ Note that `WordGram` objects are *immutable*, meaning they should not change aft
 
 You can expand the sections below to see details about individual methods you need to implement.
 
-<details>
-<summary>Expand for details on the Constructor</summary>
 
-You'll construct a `WordGram` object by passing as constructor arguments: an array, a starting index, and the size (or order) of the `WordGram.` You'll **store the strings in an array instance variable** by copying them from the array passed to the constructor.
-
-There are three instance variables in `WordGram`:
-```
-private String[] myWords;
-private String myToString;
-private int myHash;
-```
-
-The constructor for WordGram `public WordGram(String[] source, int start, int size)`
-should store `size` strings from the array `source`, starting at index `start` (of `source`) into the private `String` array instance variable `myWords` of the `WordGram` class. The array `myWords` should contain exactly `size` strings. 
-
-For example, suppose parameter `words` is the array below, with "this" at index 0.
-
-| | | | | | | |
-| --- | --- | --- | --- | --- | --- | --- |
-| "this" | "is" | "a" | "test" |"of" |"the" |"code" |
-| | | | | | |
-
-The call `new WordGram(words,3,4)` should create this array `myWords` since the starting index is the second parameter, 3, and the size is the third parameter, 4.
-
-| | | | |
-| --- | --- | --- | --- |
-| "test" | "of" | "the" | "code"|
-| | | | |
-
-You can initialize the instance variables `myToString` and `myHash` in the constructor stub to whatever default values you choose; these will change when you implement the methods `.toString()` and `.hashCode()`, respectively.
-</details>
-
-<details>
-<summary>Expand for details on wordAt()</summary>
-
-The `wordAt()` method should return the word at the given index in `myWords`. 
-
-</details>
-
-<details>
-<summary>Expand for details on length()</summary>
-
-The `length()` method should return the order of the `WordGram`, that is, the length of `myWords`. 
-</details>
-
-<details>
-<summary>Expand for details on equals()</summary>
-
-The `equals()` method should return `true` when the parameter passed is a `WordGram` object with **the same strings in the same order** as this object. 
-
-The [Java API specification of `.equals()`](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object) takes an `Object` type as input. Thus, the first thing the `WordGram` `equals()` method should do is check if the parameter passed is really a `WordGram` using the `instanceof` operator, and if not return false. Otherwise, the parameter can be *cast* as a `WordGram`. This is done for you in the starter code and you do not need to change it.
-
-Then what you need to do is compare the strings in the array `myWords` of `other` and `this` (the object on which `equals()` is called). Note that `WordGram` objects of different lengths cannot be equal, and your code should check this.
-
-</details>
-
-<details>
-<summary>Expand for details on hashCode()</summary>
-
-The `hashCode()` method should return an `int` value based on all the strings in instance variable `myWords`. See the [Java API documentation](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()) for the design constraints to which a `hashCode()` method should conform. 
-
-Note that the Java String class already has a good [`.hashCode()` method](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#hashCode()) we can leverage. Use the `.hashCode()` of the String returned by `this.toString()` to implement this method.
-
-Since `WordGram` objects are immutable (do not change after creation), you do not need to recompute the hash value each time `.hashCode()` is called. Instead, you can compute it the first time `.hashCode()` is called (which you can check against whatever default value you might set in the constructor), and store the result in the `myHash` instance variable. On subsequent calls, simply return `myHash`.
-</details>
-
-<details>
-<summary>Expand for details on shiftAdd()</summary>
-
-If this `WordGram` has k entries then the `shiftAdd()` method should create and return a _**new**_ `WordGram` object, also with k entries, whose *first* k-1 entries are the same as the *last* k-1 entries of this `WordGram`, and whose last entry is the parameter `last`. Recall that `WordGram` objects are immutable and cannot be modified once created - **this method must create a new WordGram object** and copy values correctly to return back to the user.
-
-For example, if `WordGram w` is 
-| | | |
-| --- | --- | --- |
-| "apple" | "pear" | "cherry" |
-| | | | 
-
-then the method call `w.shiftAdd("lemon")` should return a new `WordGram` containing {"pear", "cherry", "lemon"}. Note that this new `WordGram` will not equal w.
-
-Note: To implement `shiftAdd()` you'll need to create a new `WordGram` object. The code in the method will still be able to assign values to the private instance variables of that object directly since the `shiftAdd()` method is in the `WordGram` class.
-
-</details>
-
-<details>
-<summary>Expand for details on toString()</summary>
-
-The `toString()` method should return a printable `String` representing all the strings stored in the `WordGram` instance variable `myWords`, each separated by a single blank space (that is, `" "`). You may find the String `join` method useful, see [the documentation](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...)).
-
-You do not need to recompute this `String` each time `toString()` is called -- instead, store the String in instance variable `myToString`. On subsequent calls your code should simply return the value stored in `myToString` (again using the immutability of `WordGram`s to ensure this value will not change). To determine whether a given call to `toString()` is the first, you can compare to the default constructor value of `myToString`.
-
-</details>
 
 After implementing the `WordGram` class, you can run the `WordGramTest` [JUnit tests](#junit-tests).
 
