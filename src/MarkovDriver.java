@@ -50,9 +50,6 @@ public class MarkovDriver {
 		if (PRINT_MODE) {
 			printNicely(random,80);
 		}
-		
-		
-
 	}
 
 	private static void printNicely(String random, int screenWidth) {

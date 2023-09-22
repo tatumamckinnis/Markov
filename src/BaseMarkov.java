@@ -15,7 +15,7 @@ public class BaseMarkov implements MarkovInterface {
 	protected String[] myWords;		// Training text split into array of words 
 	protected Random myRandom;		// Random number generator
 	protected int myOrder;			// Length of WordGrams used
-	protected static String END_OF_TEXT = ""; 
+	protected static String END_OF_TEXT = "*** ERROR ***"; 
 	
 	/**
 	 * Default constructor creates order 3 model
@@ -81,7 +81,6 @@ public class BaseMarkov implements MarkovInterface {
 	private String getNextWord(WordGram wgram) {
 		List<String> follows = getFollows(wgram);
 		if (follows.size() == 0) {
-			System.out.println("******ERROR********");
 			return END_OF_TEXT;
 		}
 		else {
@@ -89,7 +88,6 @@ public class BaseMarkov implements MarkovInterface {
 			return follows.get(randomIndex);
 		}
 	}
-
 
 	/**
 	 * Generates length random words based on training text.
@@ -119,7 +117,6 @@ public class BaseMarkov implements MarkovInterface {
 		return String.join(" ", randomWords);
 	}
 
-
 	/**
 	 * Returns order of Markov model = the length of
 	 * WordGrams used.
@@ -128,7 +125,6 @@ public class BaseMarkov implements MarkovInterface {
 	public int getOrder() {
 		return myOrder;
 	}
-
 
 	/**
 	 * Sets the seed of the random number generator

@@ -33,9 +33,10 @@ public class MarkovTest {
         MarkovInterface markov = getModel(2);
         markov.setTraining(training);
         String output = "";
-        while (output.length() < 15) {
-            output = markov.getRandomText(100);
-        }
+        //while (output.length() < 15) {
+        //    output = markov.getRandomText(100);
+        //}
+        output = markov.getRandomText(500);
 
         for (String s : must) {
             assertTrue(output.contains(s));
@@ -75,8 +76,10 @@ public class MarkovTest {
     /**
      * This test checks if MarkovModel makes a correct Ngram when the source
      * contains no repeat patterns
+     * 
+     * NO LONGER VALID since spec changed when wordgram doesn't occurr
      */
-    @Test
+    // @Test
     public void testMapNoRepeats() {
         String testString = "q w e r t y u i o p a s d f g h j k l z x c v b n m aa ab ac ad ae af ag";
         int length = 100;
