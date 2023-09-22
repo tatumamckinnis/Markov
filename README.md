@@ -90,7 +90,7 @@ You can test all the tests in `WordGramTest` by hovering over that label in the 
 <summary>Expand here for screenshot running JUnit test in VS Code</summary>
 
 <div align="center">
-  <img src="figures/junit2.png">
+  <img src="figures/junit3.png">
 </div>
 
 </details>
