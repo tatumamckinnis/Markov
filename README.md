@@ -1,4 +1,4 @@
-d# Project 2: Markov, Fall 2023
+# Project 2: Markov, Fall 2023
 
 This is the directions document for Project P2 Markov in CompSci 201 at Duke University, Fall 2023.
 
