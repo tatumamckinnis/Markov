@@ -55,7 +55,7 @@ public HashMarkov() {
     public List<String> getFollows(WordGram wgram) {
         // TODO Auto-generated method stub
         if (!map.containsKey(wgram))
-			throw new NoSuchElementException("This " + wgram + "does not exist in the map");
+			throw new NoSuchElementException("This " + wgram + " does not exist in the map");
             else 
             {
 		return map.get(wgram);
