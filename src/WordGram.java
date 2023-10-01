@@ -132,26 +132,13 @@ public class WordGram {
      * Returns space separated words stored in the WordGram
      * as a single String.
      */
+  
     @Override
-    public String toString() {
-        String result = "";
-        if (myToString == null)
-        {
-        for (int i =0; i<this.length(); i++)
-        {
-			if (i==0)
-			{
-				 result = result + myWords[i];
-			}
-			else 
-		{
-            result = result + myWords[i] + " "; 
+	public String toString(){
+		if (myToString == null) {
+			myToString = String.join(" ",myWords);
 		}
-        }
-        myToString = result;
-	}
-        return myToString; 
+		return myToString;
     }
-        
-    }
+}
 
