@@ -54,12 +54,12 @@ public HashMarkov() {
     @Override
     public List<String> getFollows(WordGram wgram) {
         // TODO Auto-generated method stub
-        if (!map.containsKey(wgram))
-			throw new NoSuchElementException("This " + wgram + " does not exist in the map");
-            else 
-            {
-		return map.get(wgram);
+		List <String> follows = new ArrayList<>();
+        if (map.containsKey(wgram))
+		{
+		follows = map.get(wgram);
             }
+			return follows;
         //throw new UnsupportedOperationException("Unimplemented method 'getFollows'");
     }
 
